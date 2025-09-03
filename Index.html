@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Nutrition Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-gray-800 rounded-2xl shadow-2xl p-6 md:p-10 w-full max-w-4xl space-y-8">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-white text-center tracking-tight">
+            Gym Nutrition Tracker
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="space-y-4">
+                <label for="protein" class="block text-sm font-medium text-gray-400">Proteins (g)</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                    <input type="number" name="protein" id="protein" class="block w-full rounded-md border-0 py-3 pl-4 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Enter proteins in grams" oninput="calculateMacros()">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">g</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <label for="carbs" class="block text-sm font-medium text-gray-400">Carbohydrates (g)</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                    <input type="number" name="carbs" id="carbs" class="block w-full rounded-md border-0 py-3 pl-4 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Enter carbs in grams" oninput="calculateMacros()">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">g</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <label for="fat" class="block text-sm font-medium text-gray-400">Fats (g)</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                    <input type="number" name="fat" id="fat" class="block w-full rounded-md border-0 py-3 pl-4 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Enter fats in grams" oninput="calculateMacros()">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">g</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <label for="fiber" class="block text-sm font-medium text-gray-400">Fibers (g)</label>
+                <div class="relative mt-1 rounded-md shadow-sm">
+                    <input type="number" name="fiber" id="fiber" class="block w-full rounded-md border-0 py-3 pl-4 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Enter fibers in grams" oninput="calculateMacros()">
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm">g</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 text-center font-semibold">
+            <div class="bg-gray-700 p-4 rounded-lg">
+                <div class="text-sm font-medium text-gray-300">Total Proteins</div>
+                <div id="totalProtein" class="text-xl md:text-2xl mt-1 text-blue-400">0g</div>
+            </div>
+            <div class="bg-gray-700 p-4 rounded-lg">
+                <div class="text-sm font-medium text-gray-300">Total Carbs</div>
+                <div id="totalCarbs" class="text-xl md:text-2xl mt-1 text-orange-400">0g</div>
+            </div>
+            <div class="bg-gray-700 p-4 rounded-lg">
+                <div class="text-sm font-medium text-gray-300">Total Fats</div>
+                <div id="totalFat" class="text-xl md:text-2xl mt-1 text-red-400">0g</div>
+            </div>
+            <div class="bg-gray-700 p-4 rounded-lg">
+                <div class="text-sm font-medium text-gray-300">Total Fibers</div>
+                <div id="totalFibers" class="text-xl md:text-2xl mt-1 text-green-400">0g</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function calculateMacros() {
+            const protein = parseFloat(document.getElementById('protein').value) || 0;
+            const carbs = parseFloat(document.getElementById('carbs').value) || 0;
+            const fat = parseFloat(document.getElementById('fat').value) || 0;
+            const fiber = parseFloat(document.getElementById('fiber').value) || 0;
+
+            document.getElementById('totalProtein').textContent = `${protein}g`;
+            document.getElementById('totalCarbs').textContent = `${carbs}g`;
+            document.getElementById('totalFat').textContent = `${fat}g`;
+            document.getElementById('totalFibers').textContent = `${fiber}g`;
+        }
+    </script>
+</body>
+</html>
